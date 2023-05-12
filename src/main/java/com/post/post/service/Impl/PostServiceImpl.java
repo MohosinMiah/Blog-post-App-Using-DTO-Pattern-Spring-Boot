@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.post.post.entity.Post;
+import com.post.post.exception.ResourceNotFoundException;
 import com.post.post.payload.PostDto;
 import com.post.post.repository.PostRepository;
 import com.post.post.service.PostService;
@@ -53,6 +54,14 @@ public class PostServiceImpl implements PostService{
 
 
 
+    @Override
+    public PostDto getPostById(long postId) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new ResourceNotFoundException("Post", "id", postId));
+        return mapToDTO(post);
+    }
+
+
+
      // convert Entity into DTO
      private PostDto mapToDTO(Post post){
         PostDto postDto = mapper.map(post, PostDto.class);
@@ -73,6 +82,10 @@ public class PostServiceImpl implements PostService{
 //        post.setContent(postDto.getContent());
         return post;
     }
+
+
+
+
 
 
 
