@@ -33,9 +33,18 @@ public class PostController {
 
     // get post by id
     @GetMapping(value = "posts/{postId}")
-    public PostDto getPostById(@PathVariable(name = "postId") long postId){
+    public PostDto getPostById(@PathVariable(name = "postId") Long postId){
         return postService.getPostById(postId);
     }
+
+     // update post by id rest api
+     @PutMapping("posts/{postId}")
+     public PostDto updatePost(@Valid @RequestBody PostDto postDto, @PathVariable(name = "postId") Long postId){
+ 
+        PostDto postResponse = postService.updatePost(postDto, postId);
+ 
+        return postResponse;
+     }
 
 
 }
