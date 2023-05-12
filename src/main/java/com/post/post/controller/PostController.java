@@ -46,5 +46,13 @@ public class PostController {
         return postResponse;
      }
 
+    // delete post rest api
+    @DeleteMapping("posts/{postId}")
+    public String deletePost(@PathVariable(name = "postId") Long postId){
+
+        postService.deletePostById(postId);
+
+        return "Post entity deleted successfully.";
+    }
 
 }

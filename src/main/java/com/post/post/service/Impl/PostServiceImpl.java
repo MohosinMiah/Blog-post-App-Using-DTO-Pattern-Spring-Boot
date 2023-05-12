@@ -74,6 +74,11 @@ public class PostServiceImpl implements PostService{
         return mapToDTO(updatedPost);
     }
     
+    @Override
+    public void deletePostById(Long postId) {
+        postRepository.deleteById(postId);
+        
+    }
 
      // convert Entity into DTO
      private PostDto mapToDTO(Post post){
@@ -96,17 +101,5 @@ public class PostServiceImpl implements PostService{
         return post;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-   
     
 }
