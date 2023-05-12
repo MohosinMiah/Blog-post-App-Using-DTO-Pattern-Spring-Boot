@@ -1,5 +1,7 @@
 package com.post.post.service;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import jakarta.validation.Valid;
 public interface PostService {
 
     PostDto createPost(@Valid PostDto postDto, HttpStatus created);
+
+    List<PostDto> getAllPosts();
 
 
 }

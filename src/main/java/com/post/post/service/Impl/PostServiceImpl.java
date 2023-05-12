@@ -1,5 +1,8 @@
 package com.post.post.service.Impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +39,20 @@ public class PostServiceImpl implements PostService{
 
     }
 
+
+
+
+    @Override
+    public List<PostDto> getAllPosts() {
+        List<Post> posts =  postRepository.findAll();
+         // convert entity to DTO
+         List<PostDto> postList = posts.stream().map(post -> mapToDTO(post)).collect(Collectors.toList());
+        
+         return postList;
+    }
+
+
+
      // convert Entity into DTO
      private PostDto mapToDTO(Post post){
         PostDto postDto = mapper.map(post, PostDto.class);
@@ -56,6 +73,8 @@ public class PostServiceImpl implements PostService{
 //        post.setContent(postDto.getContent());
         return post;
     }
+
+
 
    
     

@@ -26,5 +26,10 @@ public class PostController {
         return postService.createPost(postDto, HttpStatus.CREATED);
     }
 
+    // get all posts rest api
+    @GetMapping("posts")
+    public List<PostDto> getAllPosts(){
+        return postService.getAllPosts();
+    }
 
 }
