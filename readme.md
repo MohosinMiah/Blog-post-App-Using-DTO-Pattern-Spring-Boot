@@ -2,7 +2,7 @@
 ## Report dashboard
 /target/site/jacoco/  =  report html
 
-## Command Dependency
+## Necessary  Dependency
 mvn clean test or
 mvn test jacoco:report
 
